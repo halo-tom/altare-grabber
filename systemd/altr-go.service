@@ -1,0 +1,20 @@
+[Unit]
+Description=Altare Go pool grabber
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Environment=HOME=/root
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=-/etc/altr.env
+ExecStart=/opt/altr-grab/go-grab.sh
+StateDirectory=altr-grab
+Restart=on-abnormal
+RestartSec=120
+StandardOutput=append:/var/log/altr-go.out
+StandardError=append:/var/log/altr-go.out
+
+[Install]
+WantedBy=multi-user.target

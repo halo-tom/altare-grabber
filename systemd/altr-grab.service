@@ -1,0 +1,24 @@
+[Unit]
+Description=Altare server grabber (team pool)
+After=network-online.target
+Wants=network-online.target
+# 抢机是长跑，挂了就重开，不设启动频率上限
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Environment=HOME=/root
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=-/etc/altr.env
+ExecStart=/opt/altr-grab/grab.sh
+StateDirectory=altr-grab
+# on-abnormal：只有被信号杀掉/超时才重启。
+# 配额满、认证失效这类终态是脚本正常退出（非零），不该自动重开，
+# 否则每两分钟往平台打一次无用的创建请求。
+Restart=on-abnormal
+RestartSec=120
+StandardOutput=append:/var/log/altr-grab.out
+StandardError=append:/var/log/altr-grab.out
+
+[Install]
+WantedBy=multi-user.target

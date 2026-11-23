@@ -1,0 +1,18 @@
+# 真实配置（模板 config.example.env 例外，必须提交）
+*.env
+!config.example.env
+
+# 抢到的密码，绝不进仓库
+password.txt
+*-password.txt
+*.pw
+
+# 日志
+*.log
+*.out
+
+# 编辑器 / 系统
+.DS_Store
+.idea/
+.vscode/
+*~
