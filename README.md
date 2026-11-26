@@ -143,7 +143,7 @@ openssl version
 ### 2. 拿到代码
 
 ```bash
-git clone https://github.com/z961089510-dev/altare-grabber.git
+git clone https://github.com/halo-tom/altare-grabber.git
 cd altare-grabber
 ```
 
